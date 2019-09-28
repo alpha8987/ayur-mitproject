@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/log_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:autofillHints="@string/user_name_hint"
+        android:ems="10"
+        android:hint="@string/user_name_hint"
+        android:inputType="textPersonName"
+        android:text="@string/user_name" />
+
+    <EditText
+        android:id="@+id/log_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="126dp"
+        android:autofillHints="@string/password_hint"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:text="@string/password" />
+
+    <CheckBox
+        android:id="@+id/log_rememberme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="213dp"
+        android:text="@string/remember_me"
+        android:autofillHints="@string/remember_me_hint"
+        android:hint="@string/remember_me_hint"/>
+
+    <TextView
+        android:id="@+id/log_forgetpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/log_rememberme"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="88dp"
+        android:autofillHints="@string/forgot_password_hint"
+        android:hint="@string/forgot_password_hint"
+        android:text="@string/forgot_password" />
+
+    <Button
+        android:id="@+id/log_loginbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="254dp"
+        android:autofillHints="@string/login_hint"
+        android:background="@drawable/buttonserch"
+        android:hint="@string/login_hint"
+        android:text="@string/login" />
+
+    <TextView
+        android:id="@+id/log_dontacc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/log_rememberme"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="127dp"
+        android:autofillHints="@string/dont_have_account_hint"
+        android:hint="@string/dont_have_account_hint"
+        android:text="@string/dont_have_account"
+        />
+
+    <Button
+        android:id="@+id/log_signup"
+        android:layout_width="91dp"
+        android:layout_height="23dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="125dp"
+        android:autofillHints="@string/sign_up_hint"
+        android:background="@drawable/button_background"
+        android:hint="@string/sign_up_hint"
+        android:text="@string/sign_up" />
+
+</RelativeLayout>

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".channelDetailFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_marginStart="0dp">
+
+        <Button
+            android:id="@+id/hm_signin3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="119dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="270dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="15dp"
+            android:autofillHints="@string/sign_in_hint"
+            android:background="@drawable/button_background"
+            android:hint="@string/sign_in_hint"
+            android:text="@string/sign_in" />
+
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Patient Title"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Patient  First Name"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Patient Last Name"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="NIC/PassPort No"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="DOB"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Country"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Mobile"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Email Address"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Address"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:lines="4"
+            android:maxLines="5" />
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Emergency Contact Name"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Emergency Contact Phone"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp" />
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="@string/notificationmethod"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="onRadioButtonClicked"
+                android:text="Email"
+                tools:layout_marginLeft="60dp"
+                tools:layout_marginStart="60dp" />
+
+            <RadioButton
+                android:id="@+id/radio_2"
+                android:layout_width="103dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:onClick="onRadioButtonClicked"
+                android:text="SMS"
+                tools:layout_marginLeft="40dp" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Password"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:inputType="textPassword"/>
+        <TextView
+            android:id="@+id/cdf_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="@string/member_hint"
+            android:gravity="left"
+            android:hint="@string/member_hint"
+            android:text="Confirm Password"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:layout_marginLeft="40dp"
+            tools:layout_marginStart="40dp"
+            tools:paddingLeft="40dp"
+            tools:paddingStart="0dp"></TextView>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/channel_details_channel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints="@string/login_hint"
+            android:background="@drawable/buttonserch"
+            android:hint="@string/login_hint"
+            android:text="@string/submitbtn"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"/>
+
+        <Button
+            android:id="@+id/channel_details_channel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="99dp"
+            android:autofillHints="@string/login_hint"
+            android:background="@drawable/buttonserch"
+            android:hint="@string/login_hint"
+            android:text="@string/cancelbtn"
+            android:layout_marginLeft="60dp"/>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>
+

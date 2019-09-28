@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context=".home">
+
+
+    <Button
+        android:id="@+id/hm_signin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="119dp"
+        android:layout_height="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="@string/sign_in_hint"
+        android:background="@drawable/button_background"
+        android:hint="@string/sign_in_hint"
+        android:visibility="invisible"
+        android:text="@string/sign_in" />
+
+    <TextView
+        android:id="@+id/hm_channDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="58dp"
+        android:autofillHints="@string/channel_doc_hint"
+        android:hint="@string/channel_doc_hint"
+        android:text="@string/channel_doctor"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/hm_docname"
+        android:layout_width="191dp"
+        android:layout_height="27dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="-127dp"
+        android:layout_toStartOf="@+id/hm_channDoc"
+        android:autofillHints="@string/doc_name"
+        android:hint="@string/doc_name"
+        android:text="@string/doctor_name"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/hm_docname_spinner"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="185dp"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/hm_spec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="237dp"
+        android:autofillHints="@string/doc_name"
+        android:hint="@string/doc_name"
+        android:text="@string/specialization"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/hm_spe_spinner"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="317dp"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/hm_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="243dp"
+        android:autofillHints="@string/doc_name"
+        android:hint="@string/doc_name"
+        android:text="@string/date"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <CalendarView
+        android:id="@+id/hm_calendarView"
+        android:layout_width="219dp"
+        android:layout_height="194dp"
+        android:layout_alignEnd="@+id/hm_spe_spinner"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="52dp" />
+
+    <Button
+        android:id="@+id/hm_searchbtn"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/hm_docname_spinner"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="122dp"
+        android:layout_marginBottom="3dp"
+        android:autofillHints="@string/doc_name"
+        android:background="@drawable/buttonserch"
+        android:hint="@string/doc_name"
+        android:text="@string/search"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:visibility="visible"
+    tools:context=".home">
+
+
+    <Button
+        android:id="@+id/hm_signin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="@string/sign_in_hint"
+        android:background="@android:color/darker_gray"
+        android:hint="@string/sign_in_hint"
+        android:text="@string/sign_in" />
+
+    <Spinner
+        android:id="@+id/hm_docname_spinner"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="80dp"
+        android:spinnerMode="dropdown" />
+
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="match_parent"
+        android:layout_height="193dp"
+        android:layout_below="@id/treat"
+        android:layout_marginTop="163dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="gsfdhsgdf fsgdhf fhsgdhfsd fhdsgfhsd dshgfhsdgfhdsgfsd fsdghfsdhfgsdhfgsdh ggfhdsgf" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_below="@id/editText5"/>
+
+
+</RelativeLayout>
