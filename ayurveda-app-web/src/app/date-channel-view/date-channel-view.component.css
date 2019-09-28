@@ -1,0 +1,11 @@
+mat-grid-tile {
+  background-color: cadetblue;
+}
+
+label {
+  color: dimgray;
+}
+
+mat-grid-tile{
+  align-self: center;
+}

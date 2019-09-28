@@ -1,0 +1,61 @@
+<mat-card class="col-lg-9 col-lg-offset-2" style="background-color:#b3e5fc;">
+  <mat-card-title>
+    Search for Doctor
+  </mat-card-title>
+  <hr size="3">
+  <mat-card-content>
+    <form>
+      <div style="width: 100%">
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="doctor">Doctor Name</label></div>
+            <div class="col-lg-6">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <mat-select name="doctorIdSelect" placeholder="Select" [(ngModel)]="doctorIdString">
+                  <mat-option *ngFor="let doctor of doctorList"
+                              value="{{doctor.id}}">{{doctor.firstNames}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="specifications">Specifications</label></div>
+            <div class="col-xs-6">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <mat-select name="specSelect" placeholder="Select Specialization" [(ngModel)]="specialization">
+                  <mat-option *ngFor="let spec of specificationList"
+                              value="{{spec}}">{{spec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="date">Date</label></div>
+            <div class="col-xg-6">
+              <mat-form-field style="padding-left: 20px">
+                <input matInput name="appDatePick" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="dateSelect">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-xg-5" align="center" style="padding-right: 50px">
+              <!--<a routerLink="/search-result-view"><button mat-raised-button color="primary" style="margin-left: 90px">Search</button></a>-->
+              <button mat-raised-button color="primary" (click)="searchDoctor()" style="margin-left: 90px">Search
+              </button>
+              <!--<button (click)="searchDoctor()" mat-raised-button color="primary" style="background-color:#b3e5fc; height: fit-content;">Search</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

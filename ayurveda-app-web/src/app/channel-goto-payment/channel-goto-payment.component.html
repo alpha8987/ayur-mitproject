@@ -1,0 +1,283 @@
+<div class="row">
+  <mat-card class="col-lg-12" style="background-color:#b3e5fc;height: max-content">
+    <div class="row">
+      <div class="row">
+        <div class="col-lg-3 col-sm-offset-1" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="refNo">Reference No</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="refNo" matInput placeholder="Reference No" readonly value="{{appointmentData.appointmentRefNo}}">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3" style="padding-left: 20px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="nic">NIC/Passport</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="nic" matInput placeholder="NIC/Passport" readonly value="{{appointmentData.patient.patientNic}}">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patientFName">Patient First Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="patientName" matInput placeholder="Patient Name"
+                       readonly value="{{appointmentData.patient.firstNames}}">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="col-lg-12" style="background-color:#b3e5fc;height: max-content">
+    <div class="row">
+      <div class="row">
+        <div class="col-lg-3 col-sm-offset-1" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patentLName">Patient Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="PL" matInput placeholder="Patient Last Name" readonly
+                       value="{{appointmentData.patient.lastName}}">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3" style="padding-left: 20px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="email" matInput placeholder="Email" value="{{appointmentData.patient.email}}readonly">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="contact">Contacr No</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="contact" matInput placeholder="Contact No"
+                       value="{{appointmentData.patient.primaryContactNumber}}" readonly>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="col-lg-12" style="background-color:#b3e5fc;height: max-content">
+    <div class="row">
+      <div class="row">
+        <div class="col-lg-3 col-sm-offset-1" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="adress">Address</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="add" matInput placeholder="Address" readonly value="{{appointmentData.patient.address}}">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3" style="padding-left: 20px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="city" matInput placeholder="City" readonly value="Colombo">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="country">Country</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input id="country" matInput placeholder="Country" readonly value="Sri Lanka">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-6">
+      <div class="row">
+        <mat-card class="col-lg-12" style="background-color:#b3e5fc;height: max-content;">
+          <mat-card-subtitle>
+            Channel Details
+          </mat-card-subtitle>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-4">
+                <label for="channel_details_appDate">Appointment Date</label>
+              </div>
+              <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+                <span id="channel_details_appDate">{{appointmentData.appointmentDate | date:'dd/MM/yyyy'}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <label for="channel_details_appTime">Appointment Time</label>
+              </div>
+              <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+                <span id="channel_details_appTime">{{appointmentData.appointmentTimeSlot.startTime | date:"hh:mm a"}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <label for="channel_details_appNo">Appointment No</label>
+              </div>
+              <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+                <span id="channel_details_appNo">{{appointmentData.appointmentNumber}}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <br>
+      <div class="row">
+        <mat-card style="background-color:#b3e5fc;height: max-content;width: 100%">
+          <mat-card-subtitle>
+            Doctor Details
+          </mat-card-subtitle>
+
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-4">
+                <label for="doctor_Name">Doctor Name</label>
+              </div>
+              <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+                <span id="doctor_Name">Dr. {{appointmentData.doctor.lastName}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <label for="doctor_Spec">Specialization</label>
+              </div>
+              <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+                <span id="doctor_Spec">{{appointmentData.doctor.specialization.concat()}}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="col-lg-6" style="margin-left: 0px">
+      <mat-card style="background-color:#b3e5fc;height: max-content;width: 100%">
+        <mat-card-subtitle>
+          Payment Details
+        </mat-card-subtitle>
+
+        <mat-card-content>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="pdetails_Name">Payment Description</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="pdetails_Name">Appointment No: {{appointmentData.appointmentNumber}} for
+                               Doctor {{appointmentData.doctor.lastName}}
+                on {{appointmentData.appointmentDate | date:'dd/MM/yyyy'}}</span>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <div class="col-lg-4">
+              <label for="pdetails_Nic">Total Payment</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="pdetails_Nic">{{appointmentData.totalPayment}}</span>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <div class="col-lg-4">
+              <label for="pdetails_PayDate">Payment Date</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="pdetails_PayDate">{{today | date:"dd/MM/yyyy"}}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+<br>
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-8 ">
+    <form method="post" action="{{appointmentData.gatewayUrl}}" #form>
+      <input type="hidden" name="merchant_id" value="{{appointmentData.merchantId}}">
+      <input type="hidden" name="return_url" value="{{appointmentData.returnUrl}}">
+      <input type="hidden" name="cancel_url" value="{{appointmentData.cancelUrl}}">
+      <input type="hidden" name="notify_url" value="{{appointmentData.notifyUrl}}">
+      <input type="hidden" name="order_id" value="{{appointmentData.appointmentId}}" readonly/>
+      <input type="hidden" name="items" value="Appointment No: {{appointmentData.appointmentNumber}} for Doctor {{appointmentData.doctor.lastName}} on {{appointmentData.appointmentDate | date:'dd/MM/yyyy'}}" readonly> <br>
+      <input type="hidden" name="currency" value="LKR">
+      <input type="hidden" name="amount" value="{{appointmentData.totalPayment}}" readonly>
+      <input type="hidden" name="first_name" value="{{appointmentData.patient.firstNames}}" readonly>
+      <input type="hidden" name="last_name" value="{{appointmentData.patient.lastName}}" readonly><br>
+      <input type="hidden" name="email" value="{{appointmentData.patient.email}}" readonly>
+      <input type="hidden" name="phone" value="{{appointmentData.patient.primaryContactNumber}}" readonly><br>
+      <input type="hidden" name="address" value="{{appointmentData.patient.address}}" readonly><br><br>
+      <input type="hidden" name="city" value="Colombo">
+      <input type="hidden" name="country" value="Sri Lanka"><br><br>
+      <button mat-raised-button color="primary" (click)="form.submit()">Pay Now</button>
+    </form>
+  </div>
+</div>
+
+

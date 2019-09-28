@@ -1,0 +1,128 @@
+<mat-card class="col-lg-6 col-lg-offset-2" style="background-color:#b3e5fc;margin-right: 100px">
+  <mat-card-title>
+    Member Registration
+  </mat-card-title>
+  <hr size="3">
+  <mat-card-content>
+    <div class="col-lg-12">
+      <div class="row" *ngIf="authService.isAdminUser()">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Member Type" required>
+          <mat-select [(ngModel)]="member.memberType" maxlength="5" placeholder="Select">
+            <mat-option value="PATIENT">Patient</mat-option>
+            <mat-option value="DOCTOR">Doctor</mat-option>
+            <mat-option value="CASHIER">CASHIER</mat-option>
+            <mat-option value="PHARMACIST">Pharmacist</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row" *ngIf="authService.isAdminUser() && 'DOCTOR'===member.memberType">
+        <mat-form-field style="width: 100%">
+          <input [(ngModel)]="member.medicalLicense" matInput placeholder="Medical License" required>
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <input [(ngModel)]="member.consultationCharge" matInput placeholder="Consultation Charge" required>
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <textarea  [(ngModel)]="specializationListText" matInput placeholder="Specialization List" rows="5"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 5%">
+          <input matInput placeholder="Salutation" required>
+          <mat-select [(ngModel)]="member.title" placeholder="Title">
+            <mat-option value="Mr">Mr</mat-option>
+            <mat-option value="Miss">Miss</mat-option>
+            <mat-option value="Mrs">Mrs</mat-option>
+            <mat-option value="Dr">Dr</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field style="width: 40%; padding-left: 10px;">
+          <input [(ngModel)]="member.firstName" matInput placeholder="First Name" required>
+        </mat-form-field>
+        <mat-form-field style="width: 30%; padding-left: 10px;"
+        >
+          <input [(ngModel)]="member.lastName" matInput placeholder="Last Name" required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 100%"
+        >
+          <input [(ngModel)]="member.email" matInput placeholder="Email">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Country"
+          >
+          <mat-select [(ngModel)]="member.country" maxlength="5" placeholder="Select">
+            <mat-option value="Sri Lanka">Sri Lanka</mat-option>
+            <mat-option value="USA">USA</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 60%; padding-left: 10px;"
+        >
+          <input [(ngModel)]="member.nic" matInput placeholder="NIC/Passport" required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="padding-left: 20px">
+          <input [(ngModel)]="member.dob" [matDatepicker]="picker" matInput name="appDatePick"
+                 placeholder="Select Date of Birth" required>
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 100%"
+        >
+          <textarea [(ngModel)]="member.address" matInput placeholder="Address" rows="5"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 100%"
+        >
+          <input [(ngModel)]="member.mobileNo" matInput placeholder="Phone-Mobile" required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 50%"
+        >
+          <input [(ngModel)]="member.emergencyContactName" matInput placeholder="Emergancy-Contact Name" required>
+        </mat-form-field>
+        <mat-form-field style="width: 50%;padding-left: 10px"
+        >
+          <input [(ngModel)]="member.emergencyContactNumber" matInput placeholder="Emergancy-Contact Phone" required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <!--<mat-form-field style="width: 50%">-->
+          <mat-radio-group [(ngModel)]="member.notificationMethod">
+            <mat-radio-button color="primary" value="email">Email</mat-radio-button>
+            <mat-radio-button color="primary" style="margin-left: 50px" value="sms">SMS</mat-radio-button>
+          </mat-radio-group>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 50%"
+        >
+          <input [(ngModel)]="member.password" [type]="!show ? 'password' : 'text'" matInput placeholder="Password">
+          <mat-icon (click)="show = !show" matSuffix>{{!show ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field style="width: 50%">
+          <input [type]="!show ? 'password' : 'text'" matInput placeholder="Confirm Password">
+          <mat-icon (click)="show = !show" matSuffix>{{!show ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <button (click)="registerMemberData()" color="primary" mat-raised-button style="margin-left: 200px">Create
+          Account
+        </button>
+        <button color="primary" mat-raised-button style="margin-left: 50px" (click)="openSnackBar()">Cancel</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

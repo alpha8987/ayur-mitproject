@@ -1,0 +1,191 @@
+<div class="row">
+  <mat-card class="col-lg-12" style="background-color:#b3e5fc;height: max-content">
+    <div class="row">
+      <div class="row">
+        <div class="col-lg-3 col-sm-offset-1" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="refNo">Reference No</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input matInput id="refNo" placeholder="Reference No" [(ngModel)]="refId">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="nic">NIC/Passport</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input matInput id="nic" placeholder="NIC/Passport" [(ngModel)]="nic">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patientName" style="padding-left:50px;">Patient Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <input matInput id="patientName" placeholder="Patient Name" [(ngModel)]="name">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-2">
+          <div class="row">
+          </div>
+          <div class="row">
+            <button color="primary" mat-raised-button style="margin-left: 50px;padding-top: 0px;margin-top: 30px" (click)="searchAppointment();">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<br>
+<div class="row" *ngIf="appointmentData != null">
+  <div id="print-section">
+  <mat-card class="col-lg-5" style="background-color:#b3e5fc;height: max-content;">
+    <mat-card-subtitle>
+      Channel Details
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="channel_details_refNo">Reference No</label>
+        </div>
+        <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+          <span id="channel_details_refNo">{{appointmentData.appointmentRefNo}} </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="channel_details_appDate">Appointment Date</label>
+        </div>
+        <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+          <span id="channel_details_appDate">{{appointmentData.appointmentDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="channel_details_appTime">Appointment Time</label>
+        </div>
+        <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+          <span id="channel_details_appTime">{{appointmentData.appointmentTimeSlot.startTime | date:"hh:mm a"}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="channel_details_appNo">Appointment No</label>
+        </div>
+        <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+          <span id="channel_details_appNo">{{appointmentData.appointmentNumber}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="channel_details_appCharge">Total Fee</label>
+        </div>
+        <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+          <span id="channel_details_appCharge">{{appointmentData.totalPayment}}</span>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+  <div class="col-lg-6" style="margin-left: 100px">
+    <div class="row">
+      <mat-card style="background-color:#b3e5fc;height: max-content;width: 100%">
+        <mat-card-subtitle>
+          Patient Details
+        </mat-card-subtitle>
+
+        <mat-card-content>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="pdetails_Name">Patient Name</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="pdetails_Name">{{appointmentData.patient.title}} {{appointmentData.patient.lastName}} </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="pdetails_Nic">NIC/Passport No</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="pdetails_Nic">{{appointmentData.patient.patientNic}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="pdetails_PayDate">Payment Date</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="pdetails_PayDate">{{appointmentData.paymentMadeOn | date:"dd/MM/yyyy"}}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <br>
+    <div class="row">
+      <mat-card style="background-color:#b3e5fc;height: max-content;width: 100%">
+        <mat-card-subtitle>
+          Doctor Details
+        </mat-card-subtitle>
+
+        <mat-card-content>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="doctor_Name">Doctor Name</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="doctor_Name">Dr. {{appointmentData.doctor.lastName}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="doctor_Spec">Specialization</label>
+            </div>
+            <div class="col-lg-6 col-xs-offset-1" style="width: content-box;border:thin solid black">
+              <span id="doctor_Spec">{{appointmentData.doctor.specialization.concat()}}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  </div>
+</div>
+<br>
+<div class="row" *ngIf="this.appointmentData != null">
+  <div class="col-lg-6 col-lg-offset-8 ">
+    <button mat-raised-button color="primary" (click)="confirmPatientWaiting()">Confirm Appointment</button>
+    <button mat-raised-button color="primary" style="margin-left: 10px"
+            styleSheetFile="node_modules/bootstrap/dist/css/bootstrap.css"
+            printSectionId="print-section" ngxPrint>Print</button>
+  </div>
+</div>
+
+

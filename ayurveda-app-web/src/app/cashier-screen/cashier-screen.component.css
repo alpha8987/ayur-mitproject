@@ -1,0 +1,12 @@
+td {
+  padding: 5px;
+}
+
+th{
+  padding: 10px;
+  align-content: center;
+}
+
+table{
+  border: black;
+}

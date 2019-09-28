@@ -1,0 +1,345 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<mat-card class="col-lg-12" style="background-color:#b3e5fc;height: max-content" *ngIf="!isSessionStarted">
+  <mat-card-subtitle class="col-lg-12" style="text-align: center;font-weight: bolder">
+    Upcoming Sessions
+  </mat-card-subtitle>
+  <hr>
+  <mat-card-content>
+    <div class="row">
+      <div class="row">
+        <div class="col-lg-3" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label>Date</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label>Total Patient Count</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patientName" style="padding-left:50px;">Confirmed Patients Count(PAID)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patientName" style="padding-left:50px;">Patients Waiting</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-1" style="visibility: hidden">
+          start session
+        </div>
+      </div>
+    </div>
+      <div class="row" *ngFor="let session of sessionList">
+        <div class="col-lg-3" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label>{{session.sessionDate  | date: "dd/MM/yyyy"}} : {{session.timeSlot.startTime  | date: "hh:mm a"}} - {{session.timeSlot.endTime  | date: "hh:mm a"}}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3" style="padding-left: 50px">
+          <div class="row">
+            <div class="col-lg-12">
+              <label>{{ session.totalPatients }}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patientName" style="padding-left:50px;">{{ session.paidPatients }}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="row">
+            <div class="col-lg-12">
+              <label for="patientName" style="padding-left:50px;">{{ session.waitingPatients }}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-1" >
+          <button *ngIf="session.sessionCanBeStarted && !session.sessionStarted" color="primary" mat-raised-button style="margin-left: 50px" (click)="startSession(session.timeSlotId)">Start Session</button>
+          <button *ngIf="session.sessionCanBeStarted && session.sessionStarted" color="primary" mat-raised-button style="margin-left: 50px" (click)="startSession(session.timeSlotId)">Goto Session</button>
+          <button *ngIf="session.sessionStarted && session.waitingPatients==0" color="primary" mat-raised-button style="margin-left: 50px" (click)="endSession(session.timeSlotId)">End Session</button>
+        </div>
+      </div>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="isSessionStarted">
+  <div class="row" xmlns="http://www.w3.org/1999/html">
+    <form>
+      <div class="panel-primary" id="userdate" style="background-color:#4682B4;padding-bottom: 20px;padding-top: 20px">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="row">
+                <label for="date" style="padding-left:50px;padding-right: 100px">Dr. {{ currentSession.doctor.lastName }}</label>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="row">
+                <label for="time" style="padding-left:0px; padding-right: 100px">{{ currentSession.doctor.specialization.concat(",") }}</label>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="row">
+                <label for="day" style="padding-left: 0px; padding-right: 10px">{{ currentSession.date | date:"dd/MM/yyyy" }}</label>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="row">
+                <label for="time" style="padding-left: 0px">{{ currentSession.timeSlot.startTime | date:"HH:mm a" }}</label>
+              </div>
+            </div>
+            <div class="col-lg-1">
+              <div class="row">
+                <label for="time" style="padding-left: 0px">{{ currentSession.currentPatientCount }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+
+  <div class="row">
+
+    <div class="col-sm-1" style="background-color: #b3e5fc;">
+      <label for="no">No {{ currentSession.currentNumber }}</label>
+    </div>
+    <div class="col-sm-5" style="margin-left: 10px;background-color: #b3e5fc;padding-top: 20px; padding-bottom: 20px">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Patient Details
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-label style="padding-right: 60px; font-weight: bolder">ID001</mat-label>
+          <mat-label style="padding-right: 60px; font-weight: bolder">{{consultation.appointment.patient.title}} {{ consultation.appointment.patient.lastName }}</mat-label>
+          <mat-label style="padding-right: 60px; font-weight: bolder">30yrs</mat-label>
+
+
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Examination Findings
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea matInput placeholder="findings" style="padding-right: 250px;padding-bottom: 100px" [(ngModel)]="consultation.examinationFindings"></textarea>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Past Medical History
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="row">
+            (Examination Findings)
+            <ul>
+              <li *ngFor="let pastConsultation of consultation.previousConsultationList">
+                {{pastConsultation.appointment.appointmentDate | date:"dd/MM/yyyy"}}  : {{pastConsultation.examinationFindings}}
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            (Current Condition)
+            <ul>
+              <li *ngFor="let pastConsultation of consultation.previousConsultationList">
+                {{pastConsultation.appointment.appointmentDate | date:"dd/MM/yyyy"}}  : {{pastConsultation.currentCondition}}
+              </li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold" >
+              Current Condition
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea matInput placeholder="findings" style="padding-right: 250px;padding-bottom: 100px" [(ngModel)]="consultation.currentCondition"></textarea>
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="specifications">Treatment</label></div>
+            <div class="col-xs-6">
+              <mat-select name="consultation.treatment" placeholder="Select" [(ngModel)]="consultation.treatment">
+                <mat-option *ngFor="let treatment of treatments"
+                            [value]="treatment">{{ treatment.type }} </mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Previous Prescriptions
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="col-lg-5" style="background-color:#87CEEB;margin-right: 10px">
+            <!--<img src="assets/images/11.png">-->
+            <div class="row" *ngFor="let pastConsultation of consultation.previousConsultationList">
+              {{pastConsultation.appointment.appointmentDate | date:"dd/MM/yyyy"}}
+              <br>(Internal)
+              <ul>
+                <li *ngFor="let prescription of pastConsultation.internalPrescriptionList">{{prescription.drug.name}}</li>
+              </ul>
+              <br>(External)
+              <ul>
+                <li *ngFor="let prescription of pastConsultation.externalPrescriptionList">{{prescription.drug.name}}</li>
+              </ul>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Calendar Maintain
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose next appointment date" [(ngModel)]="consultation.nextAppointmentDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <hr size="2">
+            <div class="row" *ngFor="let pastConsultation of consultation.previousConsultationList">
+              {{pastConsultation.appointment.appointmentDate | date:"dd/MM/yyyy"}}
+              <br>(Scheduled Dates) : {{ pastConsultation.nextAppointmentDate | date:"dd/MM/yyyy" }}
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-sm-5" style="margin-left: 10px;background-color: #b3e5fc;padding-top: 20px; padding-bottom: 20px">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Prescription Internal
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div>
+            <mat-label style="padding-right: 200px; font-weight: bolder; padding-bottom: 40px">No 01</mat-label>
+          </div>
+          <mat-form-field style="padding-right: 20px">
+            <mat-select [(ngModel)]="selectedDrug" placeholder="Drug Item" (selectionChange)="setSelectedDrug(selectedDrug)" name="selectedDrug" >
+              <mat-option *ngFor="let drug of drugsList" [value]="drug" >{{ drug.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Qty</mat-label>
+            <input matInput placeholder="QTY" name="drugQty" required type="number" [(ngModel)]="prescriptionItem.qty">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Directions</mat-label>
+            <input matInput placeholder="directions" name="directions" required type="text" [(ngModel)]="prescriptionItem.direction">
+          </mat-form-field>
+          <button mat-raised-button style="background-color:mediumseagreen;align-self: center" (click)="addInternalPrescriptionItem()">Add</button>
+          <div>
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Drug</th>
+                <th>Qty</th>
+                <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let prescription of consultation.internalPrescriptionList">
+                <td>{{prescription.drug.name}}</td>
+                <td>{{prescription.qty}}</td>
+                <td>{{prescription.direction}}</td>
+                <td><button class="btn" (click)="removeFromInternalList(prescription)"><i class="fa fa-trash"></i></button></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <button mat-raised-button style="background-color:mediumseagreen;align-self: center;" (click)="moveToPostConsult()">Send</button>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: blue;font-weight: bold">
+              Prescription External
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div>
+            <div>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Drug</th>
+                  <th>Qty</th>
+                  <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let prescription of consultation.externalPrescriptionList">
+                  <td>{{prescription.drug.name}}</td>
+                  <td>{{prescription.qty}}</td>
+                  <td>{{prescription.direction}}</td>
+                  <td><button class="btn" (click)="removeFromExternalList(prescription)"><i class="fa fa-trash"></i></button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <button mat-raised-button style="background-color:mediumseagreen;align-self: center;" (click)="moveToPostConsult()">Send</button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>
+
+
+</div>

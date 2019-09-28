@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="panel-primary" id="userdata57"
+       style="background-color:#b3e5fc; padding-bottom: 10px; padding-right: 10px;">
+    <div class="form-group">
+      <div class="row" style="padding-top: 15px;padding-left: 20px">
+        <div class="col-lg-5">
+          <div class="col-lg-5 control-label"><label for="treatmentype" required="required">Treatment Type</label></div>
+          <div class="col-lg-0">
+            <mat-form-field style="width: 55%">
+              <input matInput placeholder="Treatment Type" [(ngModel)]="treatmentData.type">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 15px;padding-left: 10px">
+        <div class="col-lg-12">
+          <div class="col-lg-2   control-label"><label for="desc" required="required" style="padding-left: 1px">Treatment
+            Description</label></div>
+          <div class="col-lg-10">
+            <textarea class="md-textarea md-textarea-auto form-control" id="form7" mdbInput type="text"[(ngModel)]="treatmentData.description"></textarea>
+          </div>
+        </div>
+      </div>
+      <!--<h5 style="padding-left: 25px">Image Upload</h5>-->
+
+      <!--<div>-->
+        <!--<input #fileInput type="file" ng2FileSelect [uploader]="uploader"[(ngModel)]="treatmentData.image"/>-->
+
+        <!--<div class="drop-box" ng2FileDrop-->
+             <!--[ngClass]="{'dragover': isDropOver}"-->
+             <!--[uploader]="uploader"-->
+             <!--(fileOver)="fileOverAnother($event)"-->
+             <!--(click)="fileClicked()">-->
+          <!--<span class="drag-in-title">Import or drag file here</span>-->
+          <!--<span class="drag-over-title">Drop the file</span>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <router-outlet></router-outlet>
+      <div class="form-group">
+        <div class="row" style="padding-top: 15px;padding-left: 40px">
+          <div class="col-xg-6">
+            <button color="primary" mat-raised-button style="margin-left: 500px" (click)="addTreatmentToDB()">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <br>
+
+
+
+

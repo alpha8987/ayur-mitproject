@@ -1,0 +1,66 @@
+<div style="background-color: lightblue;margin-left: 10px">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let timeSlot of timeSlotList">
+      <td>{{ timeSlot.startTime | date:"hh:mm a" }}</td>
+      <td>{{ timeSlot.endTime | date:"hh:mm a" }}</td>
+      <td><button  mat-raised-button color="primary" (click)="selectSlot(timeSlot)">Select</button></td>
+    </tbody>
+  </table>
+</div>
+<br>
+<mat-card class="col-lg-25 col-lg-offset-2" style="background-color:lightblue;margin-left: 40px; margin-right: 5px">
+  <mat-card-title>
+
+  </mat-card-title>
+  <hr size="3">
+  <mat-card-content>
+    <form>
+      <div style="width: 100%">
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="stime">Start Time</label></div>
+            <div class="col-lg-6">
+              <mat-form-field style="width: 40%; padding-left: 10px;">
+                <input matInput name="startTime" placeholder="Start Time" required type="text" mask="00:00"
+                       [(ngModel)]="startTme">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="etime">End Time</label></div>
+            <div class="col-xs-6">
+              <mat-form-field style="width: 40%; padding-left: 10px;">
+                <input matInput name="endTime" placeholder="Max Patient Number" required [(ngModel)]="endTime"
+                       mask="00:00">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-xg-5" align="center" style="padding-right: 50px">
+              <!--<a routerLink="/search-result-view"><button mat-raised-button color="primary" style="margin-left: 90px">Search</button></a>-->
+              <button mat-raised-button color="primary" style="margin-left: 90px" (click)="addNewTimeSlot()">Add
+              </button>
+              <button mat-raised-button color="primary" style="margin-left: 90px" (click)="updateSelected()">Update
+              </button>
+              <button mat-raised-button color="primary" style="margin-left: 90px" (click)="deleteSelected()" >Delete
+              </button>
+              <!--<button (click)="searchDoctor()" mat-raised-button color="primary" style="background-color:#b3e5fc; height: fit-content;">Search</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

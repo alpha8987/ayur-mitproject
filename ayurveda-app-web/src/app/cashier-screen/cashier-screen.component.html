@@ -1,0 +1,91 @@
+<div style="background-color: lightblue;margin-left: 10px">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Drug items(Internal)</th>
+      <th>Drug items(External)</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let consultation of consultations">
+      <td>{{ consultation.appointment.appointmentNumber }}</td>
+      <td>{{ consultation.appointment.patient.title }}.{{ consultation.appointment.patient.lastName }}</td>
+      <td *ngIf="consultation.internalPrescriptionList">{{ consultation.internalPrescriptionList.length }}</td>
+      <td *ngIf="!consultation.internalPrescriptionList">NA</td>
+      <td *ngIf="consultation.externalPrescriptionList">{{ consultation.externalPrescriptionList.length }}</td>
+      <td *ngIf="!consultation.externalPrescriptionList">NA</td>
+      <td>
+        <button (click)="select(consultation)" color="primary" mat-raised-button>Select</button>
+      </td>
+    </tbody>
+  </table>
+</div>
+<br>
+<div id="print-section">
+  <mat-card class="col-lg-25 col-lg-offset-2" style="background-color:lightblue;margin-left: 40px; margin-right: 5px"
+            *ngIf="selectedConsultation">
+    <mat-card-title>
+      Consultation Charge Receipt : {{ selectedConsultation.appointmentDate | date:"dd/MM/yyyy" }}
+    </mat-card-title>
+    <hr size="3">
+    <mat-card-content>
+      <div class="row" style="padding-left: 50px">
+        Patient Name : {{ selectedConsultation.appointment.patient.title }}
+        . {{ selectedConsultation.appointment.patient.lastName }}
+        <br>
+        Doctor Name : Dr. {{ selectedConsultation.appointment.doctor.lastName }}
+        <br>
+        Reference No : {{ selectedConsultation.appointment.appointmentRefNo }}
+      </div>
+      <div style="padding-left: 50px" class="row" *ngIf="selectedConsultation.internalPrescriptionList">
+        <hr size="2">
+        Internal Medications
+        <hr size="2">
+        <div class="row" style="padding-left: 50px">
+          <table>
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Charge</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let item of selectedConsultation.internalPrescriptionList">
+              <td>{{ item.drug.name }}</td>
+              <td align="right">{{ item.qty }}</td>
+              <td align="right">{{ item.qty * item.drug.unitPrice | currency:"LKR " }}</td>
+            </tr>
+            <tr>
+              <td colspan="3"><hr></td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Total</b></td>
+              <td>{{ selectedConsultation.totalCharge | currency:"LKR " }}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+      <hr size="3">
+      <br>
+    </mat-card-content>
+  </mat-card>
+</div>
+<br>
+
+<mat-card class="col-lg-9" style="background-color:lightblue;padding-left: 50px" *ngIf="selectedConsultation">
+  <mat-card-content>
+    <div class="row">
+      <div class="col-lg-3">
+        <button mat-raised-button color="primary" style="margin-left: 10px"
+                [useExistingCss]="true" printSectionId="print-section" ngxPrint (click)="chargeAndClose()">Charge</button>
+      </div>
+      <div class="col-lg-3">
+        <button mat-raised-button color="primary" style="margin-left: 10px" (click)="cancelSelection()">Cancel</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

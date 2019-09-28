@@ -1,0 +1,93 @@
+<div style="background-color: lightblue;margin-left: 10px">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Room Number</th>
+      <th>Date</th>
+      <th>Time Slot</th>
+      <th>Max Patient Count</th>
+      <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let slot of availableTimeSlots">
+      <td>{{ slot.roomNumber }}</td>
+      <td>{{ slot.date | date:"dd/MM/yyyy" }}</td>
+      <td>{{ slot.timeSlot.startTime | date:"HH:mm a" }} - {{ slot.timeSlot.endTime | date:"HH:mm a" }}</td>
+      <td>{{ slot.maxPatientCount }}</td>
+      <td><button mat-raised-button color="primary" (click)="selectSlot(slot)">Select</button></td>
+    </tbody>
+  </table>
+</div>
+<br>
+<mat-card class="col-lg-25 col-lg-offset-2"style="background-color:lightblue;margin-left: 40px; margin-right: 5px">
+  <mat-card-title>
+
+  </mat-card-title>
+  <hr size="3">
+  <mat-card-content>
+    <form>
+      <div style="width: 100%">
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="doctor">Room Number</label></div>
+            <div class="col-lg-6">
+              <mat-select name="roomSelect" placeholder="Select" [(ngModel)]="selectedAvailableTime.roomNumber">
+                <mat-option value="1">ROOM : 001</mat-option>
+                <mat-option value="2">ROOM : 002</mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="date">Date</label></div>
+            <div class="col-xg-6">
+              <mat-form-field style="padding-left: 20px">
+                <input matInput name="appDatePick" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="selectedAvailableTime.date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="specifications">Time Slot</label></div>
+            <div class="col-xs-6">
+              <mat-select name="doctorIdSelect" placeholder="Select" [(ngModel)]="selectedAvailableTime.timeSlotId">
+                <mat-option *ngFor="let timeSlot of timeSlots"
+                  [value]="timeSlot.id">{{ timeSlot.startTime | date:"HH:mm a" }} - {{ timeSlot.endTime | date:"HH:mm a" }} </mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label for="doctor">Max Patient Count</label></div>
+            <div class="col-lg-6">
+              <mat-form-field style="width: 40%; padding-left: 10px;" >
+                <input matInput name="maxPatient" placeholder="Max Patient Number" required [(ngModel)]="selectedAvailableTime.maxPatientCount">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-xg-5" align="center" style="padding-right: 50px">
+              <!--<a routerLink="/search-result-view"><button mat-raised-button color="primary" style="margin-left: 90px">Search</button></a>-->
+              <button mat-raised-button color="primary"style="margin-left: 90px" (click)="addNewTimeSlot()">Add
+              </button>
+              <button mat-raised-button color="primary"style="margin-left: 90px" (click)="updateTimeSlot()">Update
+              </button>
+              <button mat-raised-button color="primary"style="margin-left: 90px" (click)="deleteSlot()">Delete
+              </button>
+              <!--<button (click)="searchDoctor()" mat-raised-button color="primary" style="background-color:#b3e5fc; height: fit-content;">Search</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

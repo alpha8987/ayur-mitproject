@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-sm-12" style="margin-left: 10px;background-color: #b3e5fc;padding-top: 20px; padding-bottom: 20px">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: blue;font-weight: bold">
+            Payment Details
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field style="padding-left: 25px;">
+          <input matInput name="appDatePick" [matDatepicker]="picker" placeholder="Date From" [(ngModel)]="FromDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field style="padding-left: 55px;">
+          <input matInput name="dateToPick" [matDatepicker]="pickerTo" placeholder="Date To" [(ngModel)]="ToDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="searchPayments()" style="margin-left: 50px">Search</button>
+        <button mat-raised-button color="primary" (click)="getAllPayments()" style="margin-left: 30px">Show All</button>
+        <button [useExistingCss]="true" color="primary" mat-raised-button
+                ngxPrint printSectionId="print-section" style="margin-left: 10px">Print</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<br>
+<div style="background-color: lightblue;margin-left: 10px" id="print-section">
+  <hr>
+  Payments Report
+  <hr>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Amount (LKR)</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="consultationList">
+    <tr *ngFor="let consultation of consultationList" >
+      <td>{{ consultation.appointmentDate | date:"dd/MM/yyyy" }}</td>
+      <td>
+        <div class="row">
+          Payment for appointment.{{ consultation.appointment.appointmentRefNo }}
+        </div>
+        <div class="row">
+          Payment for medication.{{ consultation.appointment.appointmentRefNo }}
+        </div>
+      </td>
+      <td>
+        <div class="row">
+          {{ consultation.appointment.doctorCharge+consultation.appointment.roomCharge | currency:"LKR " }}
+        </div>
+        <div class="row">
+          {{ consultation.totalCharge | currency:"LKR " }}
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

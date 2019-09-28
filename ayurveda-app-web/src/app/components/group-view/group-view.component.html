@@ -1,0 +1,21 @@
+<label for="userName" style="padding-right: 10px">Username</label>
+  <mat-form-field>
+    <input name="username" matInput placeholder="User Name" [(ngModel)]="chatUser">
+  </mat-form-field>
+<button mat-raised-button color="primary" (click)="loginToChat()" style="margin-left: 40px">Join Chat
+</button>
+
+<div class="row" *ngIf="isConnected">
+  <div class="messages" *ngFor="let message of messages">
+    <p>
+      <i>{{ message.sender.uid }}</i> <br />
+      {{ message.text }}
+    </p>
+  </div>
+  <div class="messageInput">
+    <input type="text" placeholder="enter a text message" #messageText />
+    <button (click)="sendMessage(messageText.value); messageText.value = ''">
+      Send
+    </button>
+  </div>
+</div>

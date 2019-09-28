@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ayurveda.server</groupId>
+    <artifactId>ayurveda-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>ayurweda-service</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--send email-->
+        <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.6.2</version>
+    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.9.3</version>
+        </dependency>
+
+        <!--type script generator dependency-->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>cz.habarta.typescript-generator</groupId>
+                <artifactId>typescript-generator-maven-plugin</artifactId>
+                <version>2.14.505</version>
+                <executions>
+                    <execution>
+                        <id>generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jsonLibrary>jackson2</jsonLibrary>
+                    <classes>
+                        <class>com.ayurveda.server.api.response.DoctorResponse</class>
+                        <class>com.ayurveda.server.api.request.DoctorSearchRequest</class>
+                        <class>com.ayurveda.server.api.request.AvailableTimeRequest</class>
+                        <class>com.ayurveda.server.dto.AppointmentData</class>
+                        <class>com.ayurveda.server.api.response.AppointmentResponse</class>
+                        <class>com.ayurveda.server.api.response.DoctorAndSpecializationData</class>
+                        <class>com.ayurveda.server.dto.Member</class>
+                        <class>com.ayurveda.server.dto.DoctorSessionInfo</class>
+                        <class>com.ayurveda.server.domain.ContactUs</class>
+                        <class>com.ayurveda.server.domain.Treatments</class>
+                        <class>com.ayurveda.server.domain.AvailableTimeSlots</class>
+                        <class>com.ayurveda.server.domain.Consultation</class>
+                        <class>com.ayurveda.server.domain.Drug</class>
+                        <class>com.ayurveda.server.dto.Member</class>
+                        <class>com.ayurveda.server.dto.User</class>
+                        <class>com.ayurveda.server.domain.PasswordResetToken</class>
+                    </classes>
+                    <outputKind>module</outputKind>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-jsw-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-daemons</goal>
+                        </goals>
+                        <configuration>
+                            <repositoryLayout>flat</repositoryLayout>
+                            <configurationDirectory>conf</configurationDirectory>
+                            <configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
+                            <copyConfigurationDirectory>true</copyConfigurationDirectory>
+                            <useWildcardClassPath>true</useWildcardClassPath>
+                            <daemons>
+                                <daemon>
+                                    <id>ayurveda-service</id>
+                                    <wrapperMainClass>org.tanukisoftware.wrapper.WrapperSimpleApp</wrapperMainClass>
+                                    <mainClass>com.ayurveda.server.AyurvedaService</mainClass>
+                                    <commandLineArguments>
+                                        <commandLineArgument>start</commandLineArgument>
+                                    </commandLineArguments>
+                                    <jvmSettings>
+                                        <extraArguments>
+                                            <extraArgument>-Dspring.profiles.active=local</extraArgument>
+                                        </extraArguments>
+                                    </jvmSettings>
+                                    <generatorConfigurations>
+                                        <generatorConfiguration>
+                                            <generator>jsw</generator>
+                                            <includes>
+                                                <include>linux-x86-64</include>
+                                                <include>windows-x86-64</include>
+                                                <include>macosx-universal-64</include>
+                                            </includes>
+                                            <configuration>
+                                                <property>
+                                                    <name>configuration.directory.in.classpath.first</name>
+                                                    <value>conf</value>
+                                                </property>
+                                            </configuration>
+                                        </generatorConfiguration>
+                                    </generatorConfigurations>
+                                    <platforms>
+                                        <platform>jsw</platform>
+                                    </platforms>
+                                </daemon>
+                            </daemons>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/src.xml</descriptor>
+                    </descriptors>
+                    <finalName>ayurveda-service-${project.version}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

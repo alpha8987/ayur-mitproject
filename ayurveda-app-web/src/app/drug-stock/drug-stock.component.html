@@ -1,0 +1,152 @@
+<div style="background-color: lightblue;margin-left: 10px">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Drug Name</th>
+      <th>Description</th>
+      <th>Unit Price</th>
+      <th>Available QTY</th>
+      <th>Reorder Level</th>
+      <th>Manufactured Date</th>
+      <th>Expire Date</th>
+      <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let drug of drugsList">
+      <td>{{ drug.name }}</td>
+      <td>{{ drug.description }}</td>
+      <td>{{ drug.unitPrice }}</td>
+      <td>{{ drug.availableQuantity }}</td>
+      <td *ngIf="+drug.availableQuantity>+drug.reorderLevel"
+          style="background-color: green">{{ drug.reorderLevel }}</td>
+      <td *ngIf="+drug.availableQuantity<=+drug.reorderLevel" style="background-color: red">{{ drug.reorderLevel }}</td>
+      <td>{{ drug.manufactureDate | date:"dd/MM/yyyy" }}</td>
+      <td>{{ drug.expiryDate | date:"dd/MM/yyyy" }}</td>
+      <td>
+        <button (click)="select(drug)" color="primary" mat-raised-button>Select</button>
+      </td>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class="row" *ngIf="!selectedDrug">
+  <button (click)="initAddNew()" mat-raised-button color="primary">Add New Drug</button>
+</div>
+<mat-card class="col-lg-25 col-lg-offset-2" style="background-color:lightblue;margin-left: 40px; margin-right: 5px"
+          *ngIf="selectedDrug">
+  <mat-card-title>
+
+  </mat-card-title>
+  <hr size="3">
+  <mat-card-content>
+    <form>
+      <div style="width: 100%">
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Drug Name</label></div>
+            <div class="col-lg-6">
+              <mat-form-field style="width: 40%; padding-left: 10px;">
+                <input *ngIf="!selectedDrug.id" matInput placeholder="Drug Name" name="name" required
+                       [(ngModel)]="selectedDrug.name">
+                <input *ngIf="selectedDrug.id" matInput placeholder="Drug Name" name="name" readonly
+                       [(ngModel)]="selectedDrug.name">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Drug Description</label></div>
+            <div class="col-lg-6">
+              <mat-form-field style="width: 100%">
+                <textarea matInput placeholder="Drug Description" name="description" rows="5"
+                          [(ngModel)]="selectedDrug.description"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Unit Price</label></div>
+            <div class="col-lg-6">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="Unit Price" name="unitPrice" required type="number"
+                       [(ngModel)]="selectedDrug.unitPrice">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Available QTY</label></div>
+            <div class="col-xs-6">
+              <mat-form-field style="width: 40%; padding-left: 10px;">
+                <input matInput placeholder="Available QTY" name="availableQuantity" required type="number"
+                       [(ngModel)]="selectedDrug.availableQuantity">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Reorder QTY</label></div>
+            <div class="col-xs-6">
+              <mat-form-field style="width: 40%; padding-left: 10px;">
+                <input matInput placeholder="Reorder level" name="reorderLevel" required type="number"
+                       [(ngModel)]="selectedDrug.reorderLevel">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Manufactured Date</label></div>
+            <div class="col-xg-6">
+              <mat-form-field style="padding-left: 20px">
+                <input matInput name="manufactureDate" [matDatepicker]="manufacturePicker" placeholder="Choose a date"
+                       [(ngModel)]="selectedDrug.manufactureDate">
+                <mat-datepicker-toggle matSuffix [for]="manufacturePicker"></mat-datepicker-toggle>
+                <mat-datepicker #manufacturePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-lg-2"><label>Expiration Date</label></div>
+            <div class="col-xg-6">
+              <mat-form-field style="padding-left: 20px">
+                <input matInput name="expiryDate" [matDatepicker]="expiryPicker" placeholder="Choose a date"
+                       [(ngModel)]="selectedDrug.expiryDate">
+                <mat-datepicker-toggle matSuffix [for]="expiryPicker"></mat-datepicker-toggle>
+                <mat-datepicker #expiryPicker></mat-datepicker>
+              </mat-form-field>
+
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px">
+            <div class="col-xg-5" align="center" style="padding-right: 50px">
+              <!--<a routerLink="/search-result-view"><button mat-raised-button color="primary" style="margin-left: 90px">Search</button></a>-->
+              <button mat-raised-button color="primary" style="margin-left: 90px" (click)="addNewDrug()">
+                Add
+              </button>
+              <button mat-raised-button color="primary" style="margin-left: 90px" *ngIf="selectedDrug.id"
+                      (click)="updateDrugInfo()">
+                Update
+              </button>
+              <button mat-raised-button color="primary" style="margin-left: 90px" *ngIf="selectedDrug.id"
+                      (click)="deleteDrug()">
+                Delete
+              </button>
+              <!--<button (click)="searchDoctor()" mat-raised-button color="primary" style="background-color:#b3e5fc; height: fit-content;">Search</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

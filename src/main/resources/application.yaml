@@ -1,0 +1,33 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: ayurveda-service
+  main:
+    allow-bean-definition-overriding: true
+    banner-mode: console
+    web-application-type: servlet
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: ayurveda
+      database: ayurveda
+      username: ayur-db-user
+      password: test123
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 30MB
+
+ayur:
+  payment:
+    merchant_id: 1212202
+    gateway_url: https://sandbox.payhere.lk/pay/checkout
+    return_url: http://ayur.ngrok.io/channel-payment-summary
+    cancel_url: http://api.ayur.ngrok.io/payment/cancel
+    notify_url: http://api.ayur.ngrok.io/payment/notify
+  email:
+    username: test-email-address
+    password: password
+    mail-host: smtp.gmail.com

@@ -1,0 +1,61 @@
+<div class="col-lg-4">
+  <form>
+    <div class="panel-primary" id="userdate" style="background-color:#b3e5fc; height: fit-content;">
+      <div class="form-group">
+        <div class="row" style="padding-top: 15px;padding-left: 40px;">
+          <div class="col-lg-8" style="padding-right: 400px; ">
+            <h4><label for="doctor" style="color: black">DoctorDetails</label></h4>
+            <h5><label for="doctor">Dr {{doctorData.firstNames}} {{doctorData.lastName}}</label></h5>
+            <h5><label for="doctor">Peramuna Ayurveda Center</label></h5>
+            <h5><label for="doctor"> {{ doctorData.specializationList.join(",") }}</label></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-lg-6">
+  <div class="row" *ngFor="let timeSlot of doctorData.availableTimeSlotsList">
+    <form>
+      <div id="userdate" class="panel-primary" style="background-color:#b3e5fc; height: fit-content;">
+        <div class="form-group">
+          <div class="row" style="padding-top: 10px;padding-left: 40px; margin-right: 200px">
+            <div class="col-lg-5">
+              <div class="row">
+                <label for="date" style="padding-left:10px">{{timeSlot.date}}</label>
+              </div>
+              <div class="row">
+                <label for="date">Active patients : {{timeSlot.currentPatientCount}} </label>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="row">
+                <label for="time" style="padding-left: 100px">{{timeSlot.timeSlot.startTime  | date: "hh:mm a"}}</label>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="row">
+                <label for="day" style="padding-left: 190px">{{timeSlot.date | date: "EEEE"}}</label>
+              </div>
+              <div *ngIf="timeSlot.currentPatientCount!=timeSlot.maxPatientCount else full" class="row"
+                   style="padding-left: 200px">
+                <!--<a routerLink="/patient-details-fill">-->
+                  <!--<button mat-raised-button style="background-color: lightpink">AVAILABLE</button>-->
+                <!--</a>-->
+                <button mat-raised-button (click)="getPatientDetailsForChannel(timeSlot)" style="background-color: lightpink">AVAILABLE</button>
+              </div>
+              <ng-template #full>
+                <div class="row"
+                     style="padding-left: 220px">
+                  <button mat-raised-button style="background-color:gray" disabled>FULL</button>
+                </div>
+              </ng-template>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <br>
+  </div>
+</div>

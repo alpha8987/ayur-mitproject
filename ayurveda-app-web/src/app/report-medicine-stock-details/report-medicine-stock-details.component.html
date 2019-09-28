@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-sm-12" style="margin-left: 10px;background-color: #b3e5fc;padding-top: 20px; padding-bottom: 20px">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: blue;font-weight: bold">
+            Medicine Stock Details
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field style="padding-left: 25px;">
+          <input [(ngModel)]="expiryFromDate" [matDatepicker]="picker" matInput name="appDatePick"
+                 placeholder="Expire Date From">
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field style="padding-left: 55px;">
+          <input [(ngModel)]="expiryToDate" [matDatepicker]="pickerTo" matInput name="dateToPick"
+                 placeholder="Expire Date To">
+          <mat-datepicker-toggle [for]="pickerTo" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width:20%;padding-left: 20px;padding-right: 20px">
+          <mat-select [(ngModel)]="selectedDrugName" name="doctorIdSelect" placeholder="Drug Name">
+            <mat-option *ngFor="let drug of allDrugItems"
+                        value="{{drug.name}}">{{drug.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button (click)="searchDrugs()" color="primary" mat-raised-button style="margin-left: 10px">Search</button>
+        <button (click)="getAllDrugs()" color="primary" mat-raised-button style="margin-left: 10px">Show All</button>
+        <button [useExistingCss]="true" color="primary" mat-raised-button
+                ngxPrint printSectionId="print-section" style="margin-left: 10px">Print
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<br>
+<div style="background-color: lightblue;margin-left: 10px" id="print-section">
+  <mat-card class="col-lg-9" style="background-color:#b3e5fc;">
+    <mat-card-title>
+      Medicine Stock Details
+    </mat-card-title>
+    <mat-card-content>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Drug Name</th>
+          <th>Available QTY</th>
+          <th>Reorder Level</th>
+          <th>Manufactured Date</th>
+          <th>Expire Date</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let drug of drugList">
+          <td>{{ drug.name }}</td>
+          <td>{{ drug.availableQuantity }}</td>
+          <td>{{ drug.reorderLevel }}</td>
+          <td>{{ drug.manufactureDate | date:"dd/MM/yyyy" }}</td>
+          <td>{{ drug.expiryDate | date:"dd/MM/yyyy" }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

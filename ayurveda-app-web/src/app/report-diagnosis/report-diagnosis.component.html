@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-sm-12" style="margin-left: 10px;background-color: #b3e5fc;padding-top: 20px; padding-bottom: 20px">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: blue;font-weight: bold">
+            Patient Diagnosis Details
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field style="padding-left: 25px;">
+          <input matInput name="appDatePick" [matDatepicker]="picker" placeholder="Date From" [(ngModel)]="dateSelect">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field style="padding-left: 55px;">
+          <input matInput name="dateToPick" [matDatepicker]="pickerTo" placeholder="Date To" [(ngModel)]="dateSelect">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width:20%;padding-left: 50px;padding-right: 20px">
+          <mat-select name="doctorIdSelect" placeholder="Patient ID" [(ngModel)]="doctorIdString">
+            <mat-option *ngFor="let doctor of doctorList"
+                        value="{{doctor.id}}">{{doctor.firstNames}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width:20%;padding-left: 20px;padding-right: 20px">
+          <mat-select name="doctorIdSelect" placeholder="Patient NIC" [(ngModel)]="doctorIdString">
+            <mat-option *ngFor="let doctor of doctorList"
+                        value="{{doctor.id}}">{{doctor.firstNames}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="searchDoctor()" style="margin-left: 10px">Search</button>
+        <button mat-raised-button color="primary" (click)="searchDoctor()" style="margin-left: 10px">Show All</button>
+        <button [useExistingCss]="true" color="primary" mat-raised-button
+                ngxPrint printSectionId="print-section" style="margin-left: 10px">Print
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<br>
+<div style="background-color: lightblue;margin-left: 10px">
+  <table class="table">
+    <thead>
+    <tr>
+      <th> Visited Date</th>
+      <th>Doctor Name</th>
+      <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>5/10/2019</td>
+      <td>Dr.Chathura Perera</td>
+      <td><button mat-raised-button color="primary" (click)="searchDoctor()" style="margin-left: 10px">View</button></td>
+
+    </tbody>
+  </table>
+</div>

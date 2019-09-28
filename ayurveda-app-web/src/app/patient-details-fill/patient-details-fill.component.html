@@ -1,0 +1,162 @@
+<div class="row">
+  <form>
+    <div class="panel-primary" id="userdate" style="background-color:#4682B4;padding-bottom: 20px;padding-top: 20px">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-1">
+            <div class="row">
+              <label for="date" style="padding-left:200px;">Dr.{{doctorData.firstNames}} {{doctorData.lastName}}</label>
+            </div>
+          </div>
+          <div class="col-lg-1">
+            <div class="row">
+              <label for="time"
+                     style="padding-left: 340px; padding-right: 70px">{{doctorData.specializationList.concat()}}</label>
+            </div>
+          </div>
+          <div class="col-lg-1">
+            <div class="row">
+              <label for="day" style="padding-left: 500px">{{ timeSlot.date | date: "dd/MM/yyyy" }}</label>
+            </div>
+          </div>
+          <div class="col-lg-1">
+            <div class="row">
+              <label for="time" style="padding-left: 600px">No {{ timeSlot.roomNumber }} </label>
+            </div>
+          </div>
+          <div class="col-lg-1">
+            <div class="row">
+              <label for="time" style="padding-left: 700px">{{timeSlot.timeSlot.startTime  | date: "hh:mm a"}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<br>
+<br>
+
+<div class="panel-primary" id="userdata57" style="background-color:#b3e5fc; padding-bottom: 10px; padding-right: 0px;">
+  <div class="form-group">
+    <div class="row" style="padding-top: 15px;padding-left: 30px">
+      <div class="col-lg-5">
+        <div class="col-lg-1 control-label"><label required="required">Member</label></div>
+        <div class="col-lg-0">
+          <mat-radio-group [(ngModel)]="appointmentData.member">
+            <mat-radio-button color="primary" value="true" style="padding-left: 50px">Yes</mat-radio-button>
+            <mat-radio-button color="primary" style="padding-left: 1px" value="false">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="col-lg-5   control-label"><label for="membertype" required="required" style="padding-left: 1px">Doctor
+          Notification</label></div>
+        <div class="col-lg-0">
+          <mat-radio-group [(ngModel)]="appointmentData.needDoctorNotification">
+            <mat-radio-button color="primary" value="true" style="padding-left: 1px">Yes</mat-radio-button>
+            <mat-radio-button color="primary" style="padding-left: 1px" value="false">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 15px;padding-left: 40px">
+    <div class="col-lg-2">
+      <label for="name">Patient Name</label>
+    </div>
+    <div class="col-xs-10">
+      <mat-form-field appearance="outline" style="width: 18%; padding-right: 20px;">
+        <mat-select [(ngModel)]="appointmentData.title" placeholder="Salutation">
+          <mat-option value="Mr">Mr</mat-option>
+          <mat-option value="Mrs">Mrs</mat-option>
+          <mat-option value="Miss">Miss</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 40%;padding-right: 20px">
+        <input [(ngModel)]="appointmentData.firstName" matInput placeholder="First Name">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 40%;padding-right: 20px">
+        <input [(ngModel)]="appointmentData.lastName" matInput placeholder="Last Name">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row" style="padding-top: 15px;padding-left: 40px">
+      <div class="col-lg-2"><label for="nic">NIC/Passport</label></div>
+      <div class="col-xg-6">
+        <mat-form-field appearance="outline" style="width: 20%">
+          <input [(ngModel)]="appointmentData.nic" matInput placeholder="NIC/Passport">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row" style="padding-top: 15px;padding-left: 40px">
+      <div class="col-lg-2"><label for="area">Area</label></div>
+      <div class="col-xg-6">
+        <mat-form-field appearance="outline" style="width: 20%">
+          <input [(ngModel)]="appointmentData.area" matInput placeholder="Closest City">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row" style="padding-top: 15px;padding-left: 40px">
+      <div class="col-lg-2"><label for="phone">Phone Mobile</label></div>
+      <div class="col-xg-6">
+        <mat-form-field appearance="outline" style="width: 20%">
+          <input [(ngModel)]="appointmentData.mobile" matInput placeholder="Mobile Phone">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row" style="padding-top: 15px;padding-left: 40px">
+      <div class="col-lg-2"><label for="email">Email</label></div>
+      <div class="col-xg-6">
+        <mat-form-field appearance="outline" style="width: 40%">
+          <input [(ngModel)]="appointmentData.email" matInput placeholder="Email">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row" style="padding-top: 15px;padding-left: 40px">
+      <div class="col-lg-2"><label for="nationality">Nationality</label></div>
+      <div class="col-xs-6">
+        <mat-radio-group [(ngModel)]="appointmentData.local">
+          <mat-radio-button color="primary" value="true" style="padding-left: 1px">Local</mat-radio-button>
+          <mat-radio-button color="primary" style="padding-left: 1px" value="false">Foreign</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 15px;padding-left: 40px">
+      <div class="col-lg-2"><label>Preferred notification method</label></div>
+      <div class="col-xs-6">
+        <mat-radio-group [(ngModel)]="appointmentData.preferredNotificationMethod">
+          <mat-radio-button color="primary" value="sms" style="padding-left: 1px">SMS</mat-radio-button>
+          <mat-radio-button color="primary" style="padding-left: 1px" value="email">Email</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row" style="padding-top: 15px;padding-left: 40px">
+        <div class="col-xs-6">
+          <!--<mat-form-field appearance="outline" style="width: 18%; padding-right: 20px">-->
+          <mat-checkbox [(ngModel)]="appointmentData.acceptedTerms">I accept the <a (click)="openDialog()">terms and conditions</a>
+          </mat-checkbox>
+          <!--</mat-form-field>-->
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row" style="padding-top: 0px;padding-left: 40px">
+        <div class="col-xg-6">
+          <button color="primary" (click)="executeChannel()" mat-raised-button style="margin-left: 450px">Submit</button>
+          <button color="primary" mat-raised-button style="margin-left: 50px">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

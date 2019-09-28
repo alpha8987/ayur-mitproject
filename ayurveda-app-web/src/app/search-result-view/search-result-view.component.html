@@ -1,0 +1,92 @@
+<div class="row">
+  <div>
+    <form>
+      <div id="userdate" class="panel-primary" style="background-color:#b3e5fc; height: fit-content;">
+        <div class="form-group">
+          <div class="row" style="padding-top: 15px;padding-left: 40px;">
+            <div class="col-lg-4">
+              <div class="row">
+                <label for="doctor">Doctor Name</label>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" style="width: 90%">
+                  <mat-select name="doctorIdSelect" placeholder="Select" [(ngModel)]="doctorIdString">
+                    <mat-option *ngFor="let doctor of doctorList"
+                                value="{{doctor.id}}">{{doctor.firstNames}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="row">
+                <label for="specifications">Specifications</label>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" style="width: 90%">
+                  <mat-select name="specSelect" placeholder="Select Specialization" [(ngModel)]="specialization">
+                    <mat-option *ngFor="let spec of specificationList"
+                                value="{{spec}}">{{spec}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="row">
+                <label for="date">Date</label>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" style="width: 90%">
+                  <input matInput name="appDatePick" [matDatepicker]="picker" placeholder="Choose a date"
+                         [(ngModel)]="dateSelect">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 15px;padding-left: 40px;">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-2">
+              <button mat-raised-button color="primary" style="margin-left: 120px" (click)="searchDoctor()">Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<br>
+<br>
+
+
+<div *ngIf="doctorData != null">
+  <div class="row" *ngFor="let doctor of doctorData.allDoctors">
+    <div>
+      <form>
+        <div id="userdata" class="panel-primary" style="background-color:#ADD8E6; height: fit-content;">
+          <div class="form-group">
+            <div class="row" style="padding-top: 15px;padding-left: 40px;">
+              <div class="col-lg-4">
+                <div class="row">
+                  <label for="doctor"
+                         style="padding-right: 40px; color: cornflowerblue ">Dr. {{doctor.firstNames}} {{doctor.lastName}} </label>
+                  <label for="doctor" style="color: forestgreen">{{doctor.specializationList.concat()}} </label>
+                </div>
+                <div class="row">
+                  <label for="doctor" style="padding-right: 10px; color: cornflowerblue ">Peramuna Ayurveda
+                    Center</label>
+                    <button mat-raised-button color="primary" (click)="channelDoctor(doctor.nic)" style="margin-left: 120px">Channel Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+<div class="row">
+  <div id="print-section">
+    <mat-card class="col-lg-9" style="background-color:#b3e5fc;">
+      <mat-card-title>
+        Payment Summary
+      </mat-card-title>
+      <mat-card-subtitle>
+        Appointment Details
+      </mat-card-subtitle>
+      <mat-card-content>
+        <div class="row">
+          <div  class="col-lg-4">
+            <label for="ARef">Appointment Reference Number:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.appointmentRefNo}}
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-lg-4">
+            <label for="PI">Payment ID:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.gatewayPaymentId}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="desc">Description:</label>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+              <label for ="appno">Appointment No: {{appointmentData.appointmentNumber}} for Doctor {{appointmentData.doctor.lastName}}
+                on {{appointmentData.appointmentDate | date:'dd/MM/yyyy'}}</label>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="paymenta">Payment Amount:</label>
+            <div class="row">
+              <div class="col-lg-6 col-lg-offset-1">Channeling Charge:</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-lg-offset-1">Hospital Charge:</div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.totalPayment  | currency:'LKR ':'code'}}
+            <div class="row">
+              <div class="col-lg-7 col-lg-offset-1">{{appointmentData.doctorCharge  | currency:'LKR ':'code'}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-7 col-lg-offset-1">{{appointmentData.roomCharge  | currency:'LKR ':'code'}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="docnotif">Doctor Notifications:</label>
+          </div>
+          <div class="col-lg-7">
+            <span *ngIf="appointmentData.doctorNotificationSubscribed">Yes</span>
+            <span *ngIf="!appointmentData.doctorNotificationSubscribed">No</span>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-subtitle>
+        Patient Information
+      </mat-card-subtitle>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="fname">First Name:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.patient.firstNames}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="lname">Last Name:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.patient.lastName}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.patient.email}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="connum">Contact Number:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.patient.primaryContactNumber}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="add">Address:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.patient.address}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="asatus">Appointment Status:</label>
+          </div>
+          <div class="col-lg-7">
+            {{appointmentData.status}}
+          </div>
+        </div>
+        <hr>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<br>
+<div class="row">
+  <mat-card class="col-lg-9" style="background-color:#b3e5fc;">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-lg-3">
+          <button mat-raised-button color="primary" style="margin-left: 10px"
+                  [useExistingCss]="true" printSectionId="print-section" ngxPrint>Print</button>
+        </div>
+        <div class="col-lg-3">
+          <button mat-raised-button color="primary" style="margin-left: 10px">Cancel</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!--http://localhost:4200/channel-payment-summary?order_id=5c57e96517bd3634608957b9-->
